@@ -8,6 +8,22 @@
     <script src="scripts.js"></script>
 </head>
 <body>
-    
+    <header>
+        <h1 class="header ">ETCH-A-SKETCH</h1>
+    </header>
+    <main>
+        <div class="options"></div>
+            <div class="options__color-choice "></div>
+            <button class="options__color-mode">Colour</button>
+            <button class="options__raindow-mode">Rainbow</button>
+            <button class="options__reset">Reset</button>
+            <p class="options__grid-size"></p>
+            <div class="options__container-slider"></div>
+                <input type="range" min="1" max="64" value="32" name="slider" class="options__slider" id="grid-slider">
+        <div class="div__grid" id="grid-container"></div>
+    </main>
+    <footer>
+        <p>Copyright Fred Hartley</p>
+    </footer>
 </body>
 </html>
