@@ -1,55 +1,69 @@
-// global variables for DOM declared here
+let currentMode
+
 const gridContainer = document.getElementById("grid-container")
 const gridSlider = document.getElementById("grid-slider")
 let gridSize = document.getElementById("grid-slider").value
-
-// count the number of grid items
-// if the new value is less, delete them
-// if the new value is more, add them
+const colorModeBtn = document.querySelector('.options__color-mode');
+const rainbowModeBtn = document.querySelector('.options__raindow-mode');
+const resetBtn = document.querySelector('.options__reset');
+const colorPicker = document.getElementById('color-picker');
+const optionsContainer = document.getElementById('options-container');
 
 function generateGrid(gridSize) {
     const gridItems = document.querySelectorAll(".grid__item");
-    const currentGridSize = gridItems.length
+    let height = 400 / parseInt(gridSize);
     gridSize = gridSize * gridSize
 
-    if (gridSize > currentGridSize) {
-        const divsToAdd = gridSize - currentGridSize;
+    gridItems.forEach(element => element.remove());
 
-        for (let i = 0; i < divsToAdd; i++) {
-            const gridElement = document.createElement("div");
-            gridElement.classList.add("grid__item");
-            gridContainer.append(gridElement);
-        }
-    } else if (gridSize < currentGridSize) {
-        const divsToRemove = currentGridSize - gridSize;
-
-        for (let i = 0; i < divsToRemove; i++) {
-            gridContainer.lastElementChild.remove();
-        }
+    for (let i = 0; i < gridSize; i++) {
+        const gridElement = document.createElement("div");
+        gridElement.classList.add("grid__item");
+        gridElement.style.height = `${height}px`;
+        gridElement.style.width = `${height}px`;
+        // gridElement.addEventListener(changeColor)
+        gridContainer.append(gridElement);
     }
 }
 
-function generateGrid2(gridSize) {
-    const gridItems = document.querySelectorAll(".grid__item");
-    const currentGridItems = gridItems.length
-    gridSize = gridSize * gridSize
+function changeColor(e) {
+    if (currentMode === rainbowModeBtn) {
 
-    if (gridSize > currentGridItems) {
-        const divsToAdd = gridSize - currentGridItems;
+    }
+    else if (currentMode === colorModeBtn) {
+
+    }
+    // if color mode active, if rainbow mode active, if esracer mode active
+}
+
+function setGridItemColorFromPickerClickEvent(element) {
+    element.addEventListener('click', () => {
+        element.style.backgroundColor = colorPicker.value;
+    });
+}
+
+optionsContainer.addEventListener('click', (event) => {
+    let target = event.target;
     
-        for (let i = 0; i < divsToAdd; i++) {
-            const gridElement = document.createElement("div");
-            gridElement.classList.add("grid__item");
-            gridContainer.append(gridElement);
-        }
-    }   else if(gridSize < currentGridItems) {
-            const divsToRemove = currentGridItems - gridSize
-        
-            for (let i = 0; i < divsToRemove; i++) {
-                gridContainer.lastElementChild.remove();
-            }
+    switch(target.classList[0]) {
+        case 'options__raindow-mode':
+            currentMode = rainbowModeBtn;
+            break;
+        case 'options__color-mode':
+            currentMode = colorModeBtn;
+            break;
+        case 'options__reset':
+            resetAction();
+            break;
     }
-    }
+});
+
+function resetAction() {
+    let elements = document.querySelectorAll('.grid__item')
+    elements.forEach(function(element) {
+        element.style.backgroundColor = 'white';
+      });
+}
 
 // set it so that the grid is 16x16 on load
 // do I want to do this by fetching the value from the slider?
@@ -62,5 +76,3 @@ gridSlider.addEventListener("input", (e) => {
         gridSize = e.target.value
         generateGrid(gridSize)
 })
-
-// connect to slider (add event listener to the slider that calls generateGrid)
