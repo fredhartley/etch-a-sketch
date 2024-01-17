@@ -28,3 +28,8 @@ OnPage load generate a 16 x 16 grid (Use squared numbers)
 Set CSS class for each div generated 
 
 If the slider moves left, the number being used to square is reduced and when it is moved right the squared number is increased 
+
+* Useful Stack overflow links *
+
+https://stackoverflow.com/questions/73976125/using-a-button-to-display-different-texts-using-javascript
+
