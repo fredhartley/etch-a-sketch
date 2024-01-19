@@ -13,7 +13,8 @@ let currentColorMode = 1;
 
 function generateGrid(gridSize) {
     const gridItems = document.querySelectorAll(".grid__item");
-    let containerHW = 400 / parseInt(gridSize);
+    let gridContainerWidth = (gridContainer.offsetWidth - 2)
+    let squareHW = gridContainerWidth / parseInt(gridSize);
     gridSize = gridSize * gridSize
 
     gridItems.forEach(element => element.remove());
@@ -21,8 +22,8 @@ function generateGrid(gridSize) {
     for (let i = 0; i < gridSize; i++) {
         const gridElement = document.createElement("div");
         gridElement.classList.add("grid__item");
-        gridElement.style.height = `${containerHW}px`;
-        gridElement.style.width = `${containerHW}px`;
+        gridElement.style.height = `${squareHW}px`;
+        gridElement.style.width = `${squareHW}px`;
         // gridElement.addEventListener()
         gridContainer.append(gridElement);
         changeColorMode(gridElement)
@@ -30,12 +31,12 @@ function generateGrid(gridSize) {
 }
 
 // Generates random number for each rgb value of the rainbow mode
-function raindowColorGenerate() {
-    let red = Math.floor(Math.random() * 256);
-    let green = Math.floor(Math.random() * 256);
-    let blue = Math.floor(Math.random() * 256);
-    return [red, green, blue];
-}
+// function rainbowColorGenerate() {
+//     let red = Math.floor(Math.random() * 256);
+//     let green = Math.floor(Math.random() * 256);
+//     let blue = Math.floor(Math.random() * 256);
+//     return [red, green, blue];
+// }
 
 function changeColorMode(element) {
     if (currentColorMode === 1) {
@@ -44,33 +45,28 @@ function changeColorMode(element) {
             element.style.backgroundColor = colorPicker.value;
         });        
     }
-    else if (currentColorMode === 2) {
-        // rainbow mode 
-        element.addEventListener('click', () => {
-            let rgbValues = raindowColorGenerate();
-            let [red, green, blue] = rgbValues;
-
-            element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-        });  
-    }
-    // if color mode active, if rainbow mode active, if eraser mode active
+    // else if (currentColorMode === 2) {
+    //     // rainbow mode 
+    //     element.addEventListener('click', () => {
+    //         let rgbValues = rainbowColorGenerate();
+    //         let [red, green, blue] = rgbValues;
+    //         element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+    //     });  
+    // }
+//     // if color mode active, if rainbow mode active, if eraser mode active
 }
+ 
+// colorModeBtn.addEventListener('click', () => {
+//     currentColorMode = 1;
+//     console.log(currentColorMode)
+//     changeColorMode()
+// })
 
-function setGridItemColorFromPickerClickEvent(element) {
-    element.addEventListener('click', () => {
-        element.style.backgroundColor = colorPicker.value;
-    });
-}
-
-colorModeBtn.addEventListener('click', () => {
-    currentColorMode = 1;
-    console.log(currentColorMode)
-})
-
-rainbowModeBtn.addEventListener('click', () => {
-    currentColorMode = 2;
-    console.log(currentColorMode)
-})
+// rainbowModeBtn.addEventListener('click', () => {
+//     currentColorMode = 2;
+//     console.log(currentColorMode)
+//     changeColorMode()
+// })
 
 resetBtn.addEventListener('click', () => {
     resetAction()
@@ -94,3 +90,9 @@ gridSlider.addEventListener("input", (e) => {
         gridSize = e.target.value
         generateGrid(gridSize)
 })
+
+// function setGridItemColorFromPickerClickEvent(element) {
+//     element.addEventListener('click', () => {
+//         element.style.backgroundColor = colorPicker.value;
+//     });
+// }
