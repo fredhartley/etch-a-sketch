@@ -2,8 +2,8 @@
 const gridContainer = document.getElementById("grid-container")
 const gridSlider = document.getElementById("grid-slider")
 let gridSize = document.getElementById("grid-slider").value
-const colorModeBtn = document.getElementById('color-mode-btn');
-const rainbowModeBtn = document.getElementById('rainbow-mode-btn');
+// const colorModeBtn = document.getElementById('color-mode-btn');
+// const rainbowModeBtn = document.getElementById('rainbow-mode-btn');
 const resetBtn = document.getElementById('reset-mode-btn');
 const colorPicker = document.getElementById('color-picker');
 const optionsContainer = document.getElementById('options-container');
@@ -14,6 +14,7 @@ let currentColorMode = 1;
 function generateGrid(gridSize) {
     const gridItems = document.querySelectorAll(".grid__item");
     let gridContainerWidth = (gridContainer.offsetWidth - 2)
+    console.log(gridContainerWidth)
     let squareHW = gridContainerWidth / parseInt(gridSize);
     gridSize = gridSize * gridSize
 
@@ -29,6 +30,26 @@ function generateGrid(gridSize) {
         changeColorMode(gridElement)
     }
 }
+
+let mediaQueryDesktop = window.matchMedia('(min-width: 768px)');
+let mediaQueryTabletSmall = window.matchMedia('(min-width: 600px) and (max-width: 767px)');
+let mediaQueryTabletBig = window.matchMedia('(min-width: 768px) and (max-width: 1023px)');
+let mediaQueryMobile = window.matchMedia('(max-width: 599px)');
+
+function handleViewportChange() {
+  if (mediaQueryDesktop.matches || mediaQueryTabletSmall.matches || mediaQueryTabletBig.matches || mediaQueryMobile.matches) {
+    generateGrid(gridSize);
+  }
+}
+
+handleViewportChange(); // Run initially
+
+mediaQueryDesktop.addEventListener("change", handleViewportChange);
+mediaQueryTabletSmall.addEventListener("change", handleViewportChange);
+mediaQueryTabletBig.addEventListener("change", handleViewportChange);
+mediaQueryMobile.addEventListener("change", handleViewportChange);
+
+
 
 // Generates random number for each rgb value of the rainbow mode
 // function rainbowColorGenerate() {
