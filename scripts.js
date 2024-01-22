@@ -11,6 +11,9 @@ const optionsContainer = document.getElementById('options-container');
 // Set it by default to color mode
 let currentColorMode = 1;
 
+// set it so that the grid is 16x16 on load
+// do I want to do this by fetching the value from the slider?
+
 function generateGrid(gridSize) {
     const gridItems = document.querySelectorAll(".grid__item");
     let gridContainerWidth = (gridContainer.offsetWidth - 2)
@@ -30,6 +33,19 @@ function generateGrid(gridSize) {
         changeColorMode(gridElement)
     }
 }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   generateGrid(gridSize)
+//   // call gridGenerate with a value of 16
+// })
+
+generateGrid(gridSize)
+
+gridSlider.addEventListener("input", (e) => {
+      gridSize = e.target.value
+      generateGrid(gridSize)
+})
+
 let mediaQueryDesktop = window.matchMedia('(min-width: 992px)');
 let mediaQueryTabletSmall = window.matchMedia('(min-width: 600px) and (max-width: 767px)');
 let mediaQueryTabletBig = window.matchMedia('(min-width: 768px) and (max-width: 991px)');
@@ -117,18 +133,6 @@ function resetAction() {
         element.style.backgroundColor = 'white';
       });
 }
-
-// set it so that the grid is 16x16 on load
-// do I want to do this by fetching the value from the slider?
-document.addEventListener("DOMContentLoaded", () => {
-    generateGrid(gridSize)
-    // call gridGenerate with a value of 16
-})
-
-gridSlider.addEventListener("input", (e) => {
-        gridSize = e.target.value
-        generateGrid(gridSize)
-})
 
 // function setGridItemColorFromPickerClickEvent(element) {
 //     element.addEventListener('click', () => {
