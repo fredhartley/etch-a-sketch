@@ -34,10 +34,15 @@ function generateGrid(gridSize) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  generateGrid(gridSize)
-  // call gridGenerate with a value of 16
-})
+// document.addEventListener("DOMContentLoaded", () => {
+//   generateGrid(gridSize)
+//   // call gridGenerate with a value of 16
+// })
+
+window.onload = function() {
+  generateGrid(gridSize);
+};
+
 
 gridSlider.addEventListener("input", (e) => {
       gridSize = e.target.value
