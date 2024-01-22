@@ -33,3 +33,4 @@ If the slider moves left, the number being used to square is reduced and when it
 
 https://stackoverflow.com/questions/73976125/using-a-button-to-display-different-texts-using-javascript
 
+https://blog.logrocket.com/creating-custom-css-range-slider-javascript-upgrades/

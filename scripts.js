@@ -48,6 +48,25 @@ mediaQueryTabletSmall.addEventListener("change", handleViewportChange);
 mediaQueryTabletBig.addEventListener("change", handleViewportChange);
 mediaQueryMobile.addEventListener("change", handleViewportChange);
 
+// const sliderEl = document.querySelector("#options__slider")
+
+function progressScript() {
+  gridSlider.style.background = `linear-gradient(to right, #f50 25%, #ccc 25%)`;
+//   gridSlider.style.background = `linear-gradient(to right, #f50 ${sliderValue}%, #ccc ${sliderValue}%)`;
+}
+
+progressScript()
+
+const sliderValue = document.querySelector(".value")
+
+gridSlider.addEventListener("input", (event) => {
+  const tempSliderValue = event.target.value;
+  sliderValue.textContent = tempSliderValue + ' x ' + tempSliderValue;
+
+  const progress = (tempSliderValue / gridSlider.max) * 100;
+
+  gridSlider.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
+})
 
 
 // Generates random number for each rgb value of the rainbow mode
