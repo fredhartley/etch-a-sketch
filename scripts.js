@@ -88,9 +88,9 @@ function generateGrid(gridSize) {
 //   // call gridGenerate with a value of 16
 // })
 
-window.onload = function() {
-  generateGrid(gridSize);
-};
+// window.onload = function() {
+//   generateGrid(gridSize);
+// };
 
 
 gridSlider.addEventListener("input", (e) => {
