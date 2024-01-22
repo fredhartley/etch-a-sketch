@@ -34,11 +34,35 @@ let currentColorMode = 1;
 //     }
 // }
 
+// function generateGrid(gridSize) {
+//   const gridItems = document.querySelectorAll(".grid__item");
+
+//   // Use setTimeout to delay the calculation
+//   setTimeout(() => {
+//       let gridContainerWidth = (gridContainer.offsetWidth - 2);
+//       console.log(gridContainerWidth);
+
+//       let squareHW = gridContainerWidth / parseInt(gridSize);
+//       gridSize = gridSize * gridSize;
+
+//       gridItems.forEach(element => element.remove());
+
+//       for (let i = 0; i < gridSize; i++) {
+//           const gridElement = document.createElement("div");
+//           gridElement.classList.add("grid__item");
+//           gridElement.style.height = `${squareHW}px`;
+//           gridElement.style.width = `${squareHW}px`;
+//           gridContainer.append(gridElement);
+//           changeColorMode(gridElement);
+//       }
+//   }, 0);
+// }
+
 function generateGrid(gridSize) {
   const gridItems = document.querySelectorAll(".grid__item");
 
-  // Use setTimeout to delay the calculation
-  setTimeout(() => {
+  // Wait for the grid container to be fully rendered
+  requestAnimationFrame(() => {
       let gridContainerWidth = (gridContainer.offsetWidth - 2);
       console.log(gridContainerWidth);
 
@@ -55,7 +79,7 @@ function generateGrid(gridSize) {
           gridContainer.append(gridElement);
           changeColorMode(gridElement);
       }
-  }, 0);
+  });
 }
 
 
