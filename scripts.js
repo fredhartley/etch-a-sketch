@@ -30,10 +30,9 @@ function generateGrid(gridSize) {
         changeColorMode(gridElement)
     }
 }
-
-let mediaQueryDesktop = window.matchMedia('(min-width: 768px)');
+let mediaQueryDesktop = window.matchMedia('(min-width: 992px)');
 let mediaQueryTabletSmall = window.matchMedia('(min-width: 600px) and (max-width: 767px)');
-let mediaQueryTabletBig = window.matchMedia('(min-width: 768px) and (max-width: 1023px)');
+let mediaQueryTabletBig = window.matchMedia('(min-width: 768px) and (max-width: 991px)');
 let mediaQueryMobile = window.matchMedia('(max-width: 599px)');
 
 function handleViewportChange() {

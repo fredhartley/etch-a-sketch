@@ -1,17 +1,38 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+
+}
+
+h1 {
+  font-weight: 400;
+  letter-spacing: 0.3rem;
+  font-size: 0.5rem;
+}
+
+button {
+  font-family: 'Inter', sans-serif;
+}
+
+
+
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 300px; /* Adjust this width as needed */
-    height: 300px; /* Adjust this height as needed */
+    width: 320px; /* Adjust this width as needed */
+    height: 320px; /* Adjust this height as needed */
     background-color: blueviolet;
     justify-content: flex-start;
     align-content: flex-start;
-    border: 1px solid black;
+    border: 1px solid white;
     }
   
 .grid__item {
     flex: 1;
-    background-color: white; /* Placeholder color */
+    background-color: #F5F5F5; /* Placeholder color */
     aspect-ratio: 1; /* Creates a square aspect ratio */
     box-sizing: border-box; 
     border: 0.1px solid rgb(187, 187, 187);
@@ -28,9 +49,16 @@
 @media only screen and (min-width: 768px) {
 
   .grid {
-    width: 650px; /* Adjust this width as needed */
-    height: 650px; /* Adjust this height as needed */
+    width: 550px; /* Adjust this width as needed */
+    height: 550px; /* Adjust this height as needed */
   }
 }
 
+@media only screen and (min-width: 992px) {
+
+  .grid {
+    width: 600px; /* Adjust this width as needed */
+    height: 600px; /* Adjust this height as needed */
+  }
+}
   
