@@ -58,27 +58,51 @@ let currentColorMode = 1;
 //   }, 0);
 // }
 
+// function generateGrid(gridSize) {
+//   const gridItems = document.querySelectorAll(".grid__item");
+
+//   // Wait for the grid container to be fully rendered
+//   requestAnimationFrame(() => {
+//       let gridContainerWidth = (gridContainer.offsetWidth - 2);
+//       console.log(gridContainerWidth);
+
+//       let squareHW = gridContainerWidth / parseInt(gridSize);
+//       gridSize = gridSize * gridSize;
+
+//       gridItems.forEach(element => element.remove());
+
+//       for (let i = 0; i < gridSize; i++) {
+//           const gridElement = document.createElement("div");
+//           gridElement.classList.add("grid__item");
+//           gridElement.style.height = `${squareHW}px`;
+//           gridElement.style.width = `${squareHW}px`;
+//           gridContainer.append(gridElement);
+//           changeColorMode(gridElement);
+//       }
+//   });
+// }
+
 function generateGrid(gridSize) {
   const gridItems = document.querySelectorAll(".grid__item");
 
   // Wait for the grid container to be fully rendered
   requestAnimationFrame(() => {
-      let gridContainerWidth = (gridContainer.offsetWidth - 2);
-      console.log(gridContainerWidth);
+    let gridContainerWidth = gridContainer.offsetWidth - 2;
+    console.log(gridContainerWidth);
 
-      let squareHW = gridContainerWidth / parseInt(gridSize);
-      gridSize = gridSize * gridSize;
+    let squareHW = gridContainerWidth / parseInt(gridSize);
+    let totalGridItems = parseInt(gridSize) * parseInt(gridSize);
 
-      gridItems.forEach(element => element.remove());
+    gridItems.forEach((element) => element.remove());
 
-      for (let i = 0; i < gridSize; i++) {
-          const gridElement = document.createElement("div");
-          gridElement.classList.add("grid__item");
-          gridElement.style.height = `${squareHW}px`;
-          gridElement.style.width = `${squareHW}px`;
-          gridContainer.append(gridElement);
-          changeColorMode(gridElement);
-      }
+    for (let i = 0; i < totalGridItems; i++) {
+      const gridElement = document.createElement("div");
+      gridElement.classList.add("grid__item");
+      gridElement.style.height = `${squareHW}px`;
+      gridElement.style.width = `${squareHW}px`;
+      gridContainer.append(gridElement);
+      changeColorMode(gridElement);
+    }
   });
 }
 
