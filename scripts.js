@@ -131,11 +131,10 @@ let currentColorMode = 1;
 // }
 
 function generateGrid(gridSize) {
-
   // Wait for the grid container to be fully rendered
   setTimeout(() => {
     const gridItems = document.querySelectorAll(".grid__item");
-    let gridContainerWidth = gridContainer.offsetWidth - 2;
+    let gridContainerWidth = gridContainer.clientWidth;    
     console.log(gridContainerWidth);
 
     let squareHW = gridContainerWidth / parseInt(gridSize);
@@ -250,6 +249,9 @@ function resetAction() {
         element.style.backgroundColor = 'white';
       });
 }
+
+// window.location.reload();
+
 
 // function setGridItemColorFromPickerClickEvent(element) {
 //     element.addEventListener('click', () => {
