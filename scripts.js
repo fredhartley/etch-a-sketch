@@ -106,11 +106,35 @@ let currentColorMode = 1;
 //   });
 // }
 
+// function generateGrid(gridSize) {
+//   const gridItems = document.querySelectorAll(".grid__item");
+
+//   // Wait for the grid container to be fully rendered
+//   setTimeout(() => {
+//     let gridContainerWidth = gridContainer.offsetWidth - 2;
+//     console.log(gridContainerWidth);
+
+//     let squareHW = gridContainerWidth / parseInt(gridSize);
+//     let totalGridItems = parseInt(gridSize) * parseInt(gridSize);
+
+//     gridItems.forEach((element) => element.remove());
+
+//     for (let i = 0; i < totalGridItems; i++) {
+//       const gridElement = document.createElement("div");
+//       gridElement.classList.add("grid__item");
+//       gridElement.style.height = `${squareHW}px`;
+//       gridElement.style.width = `${squareHW}px`;
+//       gridContainer.append(gridElement);
+//       changeColorMode(gridElement);
+//     }
+//   }, 0);
+// }
+
 function generateGrid(gridSize) {
-  const gridItems = document.querySelectorAll(".grid__item");
 
   // Wait for the grid container to be fully rendered
   setTimeout(() => {
+    const gridItems = document.querySelectorAll(".grid__item");
     let gridContainerWidth = gridContainer.offsetWidth - 2;
     console.log(gridContainerWidth);
 
@@ -147,7 +171,9 @@ let mediaQueryMobile = window.matchMedia('(max-width: 599px)');
 
 function handleViewportChange() {
   if (mediaQueryDesktop.matches || mediaQueryTabletSmall.matches || mediaQueryTabletBig.matches || mediaQueryMobile.matches) {
-    generateGrid(gridSize);
+    let currentGridSize = gridSlider.value;
+    console.log(currentGridSize);
+    generateGrid(currentGridSize);
   }
 }
 
@@ -158,11 +184,8 @@ mediaQueryTabletSmall.addEventListener("change", handleViewportChange);
 mediaQueryTabletBig.addEventListener("change", handleViewportChange);
 mediaQueryMobile.addEventListener("change", handleViewportChange);
 
-// const sliderEl = document.querySelector("#options__slider")
-
 function progressScript() {
   gridSlider.style.background = `linear-gradient(to right, #f50 25%, #ccc 25%)`;
-//   gridSlider.style.background = `linear-gradient(to right, #f50 ${sliderValue}%, #ccc ${sliderValue}%)`;
 }
 
 progressScript()

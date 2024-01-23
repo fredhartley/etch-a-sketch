@@ -45,7 +45,7 @@ p {
 
 #color-picker{
   border-radius: 20%;
-  height: 40px;
+  height: 42px;
   width: 50px;
   border: none;
   outline: none;
@@ -125,7 +125,7 @@ input[type="range"]:focus::-webkit-slider-thumb {
     flex-wrap: wrap;
     width: 320px; /* Adjust this width as needed */
     height: 320px; /* Adjust this height as needed */
-    background-color: blueviolet;
+    background-color: #F5F5F5;
     justify-content: flex-start;
     align-content: flex-start;
     border: 1px solid rgb(187, 187, 187);
