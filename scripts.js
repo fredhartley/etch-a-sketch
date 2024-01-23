@@ -158,6 +158,10 @@ function generateGrid(gridSize) {
 //   // call gridGenerate with a value of 16
 // })
 
+window.addEventListener('load', () => {
+  generateGrid(gridSize);
+});
+
 gridSlider.addEventListener("input", (e) => {
       gridSize = e.target.value
       generateGrid(gridSize)
