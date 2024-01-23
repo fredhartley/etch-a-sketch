@@ -14,25 +14,25 @@ let currentColorMode = 1;
 // set it so that the grid is 16x16 on load
 // do I want to do this by fetching the value from the slider?
 
-function generateGrid(gridSize) {
-    const gridItems = document.querySelectorAll(".grid__item");
-    let gridContainerWidth = (gridContainer.offsetWidth - 2)
-    console.log(gridContainerWidth)
-    let squareHW = gridContainerWidth / parseInt(gridSize);
-    gridSize = gridSize * gridSize
+// function generateGrid(gridSize) {
+//     const gridItems = document.querySelectorAll(".grid__item");
+//     let gridContainerWidth = (gridContainer.offsetWidth - 2)
+//     console.log(gridContainerWidth)
+//     let squareHW = gridContainerWidth / parseInt(gridSize);
+//     TotalGridSize = gridSize * gridSize
 
-    gridItems.forEach(element => element.remove());
+//     gridItems.forEach(element => element.remove());
 
-    for (let i = 0; i < gridSize; i++) {
-        const gridElement = document.createElement("div");
-        gridElement.classList.add("grid__item");
-        gridElement.style.height = `${squareHW}px`;
-        gridElement.style.width = `${squareHW}px`;
-        // gridElement.addEventListener()
-        gridContainer.append(gridElement);
-        changeColorMode(gridElement)
-    }
-}
+//     for (let i = 0; i < gridSize; i++) {
+//         const gridElement = document.createElement("div");
+//         gridElement.classList.add("grid__item");
+//         gridElement.style.height = `${squareHW}px`;
+//         gridElement.style.width = `${squareHW}px`;
+//         // gridElement.addEventListener()
+//         gridContainer.append(gridElement);
+//         changeColorMode(gridElement)
+//     }
+// }
 
 // function generateGrid(gridSize) {
 //   const gridItems = document.querySelectorAll(".grid__item");
@@ -106,11 +106,34 @@ function generateGrid(gridSize) {
 //   });
 // }
 
+function generateGrid(gridSize) {
+  const gridItems = document.querySelectorAll(".grid__item");
 
-document.addEventListener("DOMContentLoaded", () => {
-  generateGrid(16)
-  // call gridGenerate with a value of 16
-})
+  // Wait for the grid container to be fully rendered
+  setTimeout(() => {
+    let gridContainerWidth = gridContainer.offsetWidth - 2;
+    console.log(gridContainerWidth);
+
+    let squareHW = gridContainerWidth / parseInt(gridSize);
+    let totalGridItems = parseInt(gridSize) * parseInt(gridSize);
+
+    gridItems.forEach((element) => element.remove());
+
+    for (let i = 0; i < totalGridItems; i++) {
+      const gridElement = document.createElement("div");
+      gridElement.classList.add("grid__item");
+      gridElement.style.height = `${squareHW}px`;
+      gridElement.style.width = `${squareHW}px`;
+      gridContainer.append(gridElement);
+      changeColorMode(gridElement);
+    }
+  }, 0);
+}
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   generateGrid(16)
+//   // call gridGenerate with a value of 16
+// })
 
 gridSlider.addEventListener("input", (e) => {
       gridSize = e.target.value
