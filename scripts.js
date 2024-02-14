@@ -2,133 +2,12 @@
 const gridContainer = document.getElementById("grid-container")
 const gridSlider = document.getElementById("grid-slider")
 let gridSize = document.getElementById("grid-slider").value
-// const colorModeBtn = document.getElementById('color-mode-btn');
-// const rainbowModeBtn = document.getElementById('rainbow-mode-btn');
 const resetBtn = document.getElementById('reset-mode-btn');
 const colorPicker = document.getElementById('color-picker');
 const optionsContainer = document.getElementById('options-container');
 
 // Set it by default to color mode
 let currentColorMode = 1;
-
-// set it so that the grid is 16x16 on load
-// do I want to do this by fetching the value from the slider?
-
-// function generateGrid(gridSize) {
-//     const gridItems = document.querySelectorAll(".grid__item");
-//     let gridContainerWidth = (gridContainer.offsetWidth - 2)
-//     console.log(gridContainerWidth)
-//     let squareHW = gridContainerWidth / parseInt(gridSize);
-//     TotalGridSize = gridSize * gridSize
-
-//     gridItems.forEach(element => element.remove());
-
-//     for (let i = 0; i < gridSize; i++) {
-//         const gridElement = document.createElement("div");
-//         gridElement.classList.add("grid__item");
-//         gridElement.style.height = `${squareHW}px`;
-//         gridElement.style.width = `${squareHW}px`;
-//         // gridElement.addEventListener()
-//         gridContainer.append(gridElement);
-//         changeColorMode(gridElement)
-//     }
-// }
-
-// function generateGrid(gridSize) {
-//   const gridItems = document.querySelectorAll(".grid__item");
-
-//   // Use setTimeout to delay the calculation
-//   setTimeout(() => {
-//       let gridContainerWidth = (gridContainer.offsetWidth - 2);
-//       console.log(gridContainerWidth);
-
-//       let squareHW = gridContainerWidth / parseInt(gridSize);
-//       gridSize = gridSize * gridSize;
-
-//       gridItems.forEach(element => element.remove());
-
-//       for (let i = 0; i < gridSize; i++) {
-//           const gridElement = document.createElement("div");
-//           gridElement.classList.add("grid__item");
-//           gridElement.style.height = `${squareHW}px`;
-//           gridElement.style.width = `${squareHW}px`;
-//           gridContainer.append(gridElement);
-//           changeColorMode(gridElement);
-//       }
-//   }, 0);
-// }
-
-// function generateGrid(gridSize) {
-//   const gridItems = document.querySelectorAll(".grid__item");
-
-//   // Wait for the grid container to be fully rendered
-//   requestAnimationFrame(() => {
-//       let gridContainerWidth = (gridContainer.offsetWidth - 2);
-//       console.log(gridContainerWidth);
-
-//       let squareHW = gridContainerWidth / parseInt(gridSize);
-//       gridSize = gridSize * gridSize;
-
-//       gridItems.forEach(element => element.remove());
-
-//       for (let i = 0; i < gridSize; i++) {
-//           const gridElement = document.createElement("div");
-//           gridElement.classList.add("grid__item");
-//           gridElement.style.height = `${squareHW}px`;
-//           gridElement.style.width = `${squareHW}px`;
-//           gridContainer.append(gridElement);
-//           changeColorMode(gridElement);
-//       }
-//   });
-// }
-
-// function generateGrid(gridSize) {
-//   const gridItems = document.querySelectorAll(".grid__item");
-
-//   // Wait for the grid container to be fully rendered
-//   requestAnimationFrame(() => {
-//     let gridContainerWidth = gridContainer.offsetWidth - 2;
-//     console.log(gridContainerWidth);
-
-//     let squareHW = gridContainerWidth / parseInt(gridSize);
-//     let totalGridItems = parseInt(gridSize) * parseInt(gridSize);
-
-//     gridItems.forEach((element) => element.remove());
-
-//     for (let i = 0; i < totalGridItems; i++) {
-//       const gridElement = document.createElement("div");
-//       gridElement.classList.add("grid__item");
-//       gridElement.style.height = `${squareHW}px`;
-//       gridElement.style.width = `${squareHW}px`;
-//       gridContainer.append(gridElement);
-//       changeColorMode(gridElement);
-//     }
-//   });
-// }
-
-// function generateGrid(gridSize) {
-//   const gridItems = document.querySelectorAll(".grid__item");
-
-//   // Wait for the grid container to be fully rendered
-//   setTimeout(() => {
-//     let gridContainerWidth = gridContainer.offsetWidth - 2;
-//     console.log(gridContainerWidth);
-
-//     let squareHW = gridContainerWidth / parseInt(gridSize);
-//     let totalGridItems = parseInt(gridSize) * parseInt(gridSize);
-
-//     gridItems.forEach((element) => element.remove());
-
-//     for (let i = 0; i < totalGridItems; i++) {
-//       const gridElement = document.createElement("div");
-//       gridElement.classList.add("grid__item");
-//       gridElement.style.height = `${squareHW}px`;
-//       gridElement.style.width = `${squareHW}px`;
-//       gridContainer.append(gridElement);
-//       changeColorMode(gridElement);
-//     }
-//   }, 0);
-// }
 
 function generateGrid(gridSize) {
   // Wait for the grid container to be fully rendered
@@ -153,11 +32,6 @@ function generateGrid(gridSize) {
   }, 0);
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   generateGrid(16)
-//   // call gridGenerate with a value of 16
-// })
-
 window.addEventListener('load', () => {
   generateGrid(gridSize);
 });
@@ -180,7 +54,7 @@ function handleViewportChange() {
   }
 }
 
-handleViewportChange(); // Run initially
+handleViewportChange(); 
 
 mediaQueryDesktop.addEventListener("change", handleViewportChange);
 mediaQueryTabletSmall.addEventListener("change", handleViewportChange);
@@ -204,15 +78,6 @@ gridSlider.addEventListener("input", (event) => {
   gridSlider.style.background = `linear-gradient(to right, #f50 ${progress}%, #ccc ${progress}%)`;
 })
 
-
-// Generates random number for each rgb value of the rainbow mode
-// function rainbowColorGenerate() {
-//     let red = Math.floor(Math.random() * 256);
-//     let green = Math.floor(Math.random() * 256);
-//     let blue = Math.floor(Math.random() * 256);
-//     return [red, green, blue];
-// }
-
 function changeColorMode(element) {
     if (currentColorMode === 1) {
         // colour mode
@@ -220,29 +85,8 @@ function changeColorMode(element) {
             element.style.backgroundColor = colorPicker.value;
         });        
     }
-    // else if (currentColorMode === 2) {
-    //     // rainbow mode 
-    //     element.addEventListener('click', () => {
-    //         let rgbValues = rainbowColorGenerate();
-    //         let [red, green, blue] = rgbValues;
-    //         element.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
-    //     });  
-    // }
-//     // if color mode active, if rainbow mode active, if eraser mode active
 }
  
-// colorModeBtn.addEventListener('click', () => {
-//     currentColorMode = 1;
-//     console.log(currentColorMode)
-//     changeColorMode()
-// })
-
-// rainbowModeBtn.addEventListener('click', () => {
-//     currentColorMode = 2;
-//     console.log(currentColorMode)
-//     changeColorMode()
-// })
-
 resetBtn.addEventListener('click', () => {
     resetAction()
 })
@@ -253,12 +97,3 @@ function resetAction() {
         element.style.backgroundColor = 'white';
       });
 }
-
-// window.location.reload();
-
-
-// function setGridItemColorFromPickerClickEvent(element) {
-//     element.addEventListener('click', () => {
-//         element.style.backgroundColor = colorPicker.value;
-//     });
-// }

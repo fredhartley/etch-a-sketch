@@ -41,8 +41,6 @@ p {
   margin-top: 50px;
 }
 
-/* Color picker styling */
-
 #color-picker{
   border-radius: 20%;
   height: 42px;
@@ -77,10 +75,8 @@ p {
 }
 
 input[type="range"] {
-  /* removing default appearance */
   -webkit-appearance: none;
   appearance: none;
-  /* creating a custom design */
   width: 100%;
   cursor: pointer;
   outline: none;
@@ -90,10 +86,8 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  /* removing default appearance */
   -webkit-appearance: none;
   appearance: none;
-  /* creating a custom design */
   height: 15px;
   width: 15px;
   background-color: #f50;
@@ -116,15 +110,14 @@ input[type="range"]:focus::-webkit-slider-thumb {
 {
   width: 322px;
   margin: 0 auto;
-  /* background-color: #66ffff; */
   box-sizing: border-box;
 }
 
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 320px; /* Adjust this width as needed */
-    height: 320px; /* Adjust this height as needed */
+    width: 320px;
+    height: 320px;
     background-color: #F5F5F5;
     justify-content: flex-start;
     align-content: flex-start;
@@ -134,8 +127,8 @@ input[type="range"]:focus::-webkit-slider-thumb {
   
 .grid__item {
     flex: 1;
-    background-color: #F5F5F5; /* Placeholder color */
-    aspect-ratio: 1; /* Creates a square aspect ratio */
+    background-color: #F5F5F5; 
+    aspect-ratio: 1;
     box-sizing: border-box; 
     border: 0.1px solid rgb(187, 187, 187);
   }
@@ -143,8 +136,8 @@ input[type="range"]:focus::-webkit-slider-thumb {
 
   @media only screen and (min-width: 600px){
     .grid {
-      width: 500px; /* Adjust this width as needed */
-      height: 500px; /* Adjust this height as needed */
+      width: 500px;
+      height: 500px; 
     }
 
     .main-container
@@ -160,8 +153,8 @@ input[type="range"]:focus::-webkit-slider-thumb {
 @media only screen and (min-width: 768px) {
 
   .grid {
-    width: 550px; /* Adjust this width as needed */
-    height: 550px; /* Adjust this height as needed */
+    width: 550px; 
+    height: 550px; 
   }
 
   .main-container
@@ -174,8 +167,8 @@ input[type="range"]:focus::-webkit-slider-thumb {
 @media only screen and (min-width: 992px) {
 
   .grid {
-    width: 600px; /* Adjust this width as needed */
-    height: 600px; /* Adjust this height as needed */
+    width: 600px;
+    height: 600px; 
   }
 
   .main-container
